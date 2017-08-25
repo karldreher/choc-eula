@@ -20,6 +20,7 @@ Keep the PS1 script and JSON file together and back the .json file up - this is 
 
 Whenever you want to update or install your apps, simply run choc-eula.ps1 from an administrative Powershell prompt.  
 `choc-eula.ps1`
+
 This will automatically accept EULAs and proceed with upgrades of all apps in your configuration without additional confirmation.
 
 This is also suitable for installing as a Scheduled Task in Windows, doing so will make sure that all your packages are always up to date. 
