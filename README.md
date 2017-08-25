@@ -10,7 +10,11 @@ Currently, this assumes that Chocolatey is installed.
 Keep both choc-eula.ps1 and choc-eula.json in the same directory.  The suggested location is "c:\Powershell" but this can be anywhere you see fit.
 
 # Configuration and operation
-Use the -configure parameter to add or remove Chocolatey packages](https://chocolatey.org/packages) to the list.  A sample list is included, you can modify as desired.
+Use the -configure parameter to add or remove Chocolatey packages](https://chocolatey.org/packages) to the list.  
+
+`choc-eula -configure`
+
+A sample list is included, you can modify as desired.
 
 Keep the PS1 script and JSON file together and back the .json file up - this is your personal, living configuration which will hopefully survive multiple PC builds.  You can continue to make changes to this for the duration of your use of choc-eula, and the usefulness will grow with with the file.
 
