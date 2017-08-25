@@ -10,7 +10,9 @@ Currently, this assumes that Chocolatey is installed.
 Keep both choc-eula.ps1 and choc-eula.json in the same directory.  The suggested location is "c:\Powershell" but this can be anywhere you see fit.
 
 # Configuration and operation
-Edit choc-eula.json and add the name of a [Chocolatey package](https://chocolatey.org/packages) to the list (one per line, comma separated - json syntax).  Keep both files together and back the .json file up - this is a living configuration which will hopefully survive multiple PC builds.  
+Edit choc-eula.json and add the name of a [Chocolatey package](https://chocolatey.org/packages) to the list (one per line, comma separated - json syntax).  
+
+Keep both files together and back the .json file up - this is your personal, living configuration which will hopefully survive multiple PC builds.  You can continue to make changes to this for the duration of your use of choc-eula, and the usefulness will grow with with the file.
 
 Whenever you want to update or install your apps, simply run choc-eula.ps1 from an administrative Powershell prompt.  This will automatically accept EULAs and proceed with upgrades of all apps in your configuration without additional confirmation.
 
