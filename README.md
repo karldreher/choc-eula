@@ -1,5 +1,5 @@
 # choc-eula
-"Everything Updates Like, Automatically!"
+"**E**verything **U**pdates **L**ike, **A**utomatically!"
 
 # Description
 choc-eula, although simple, aims to be a wrapper for Chocolatey which helps automate updates of as well as deployments to new machines.  
