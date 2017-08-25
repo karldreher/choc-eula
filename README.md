@@ -12,7 +12,7 @@ Keep both choc-eula.ps1 and choc-eula.json in the same directory.  The suggested
 # Configuration and operation
 Use the -configure parameter to add or remove Chocolatey packages](https://chocolatey.org/packages) to the list.  
 
-`choc-eula -configure`
+`choc-eula.ps1 -configure`
 
 A sample list is included, you can modify as desired.
 
