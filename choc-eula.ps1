@@ -11,16 +11,16 @@ $apps = gc $PSScriptRoot\choc-eula.json | ConvertFrom-Json
 
 function add_entry($entry) {
     $list = @()
-    foreach ($i in $apps.apps){
+    foreach ($i in $apps.app){
         
         $object = New-Object -TypeName PSObject
-        Add-Member -InputObject $object -MemberType NoteProperty -Name apps -Value $i
+        Add-Member -InputObject $object -MemberType NoteProperty -Name app -Value $i
         
         $list += $object
         }
 
     $object = New-Object -TypeName PSObject
-    Add-Member -InputObject $object -MemberType NoteProperty -Name apps -Value $entry 
+    Add-Member -InputObject $object -MemberType NoteProperty -Name app -Value $entry 
     $list += $object
 
     $list | ConvertTo-Json | out-file $PSScriptRoot\choc-eula.json
@@ -30,10 +30,10 @@ function add_entry($entry) {
 
 function delete_entry($entry) {
     $list = @()
-    foreach ($i in $apps.apps){
+    foreach ($i in $apps.app){
 
         $object = New-Object -TypeName PSObject
-        Add-Member -InputObject $object -MemberType NoteProperty -Name apps -Value $i
+        Add-Member -InputObject $object -MemberType NoteProperty -Name app -Value $i
         
         if ($i -ne $entry){$list += $object}
         
@@ -48,7 +48,7 @@ function show_config {
     $apps = gc $PSScriptRoot\choc-eula.json | ConvertFrom-Json
     write-host "The following apps are configured to update or install with choc-eula:  "
     write-host "-------------------"
-    $apps.apps
+    $apps.app
     write-host "-------------------"
     write-host ""
 }
@@ -84,7 +84,7 @@ function configure{
 
 
 function update {
-    foreach ($i in $apps.apps){
+    foreach ($i in $apps.app){
 
         choco upgrade $i -y
     }
