@@ -5,7 +5,7 @@
 choc-eula aims to be a wrapper for Chocolatey which helps automate updates of, as well as new deployments of, [Chocolatey](https://chocolatey.org/) packages.  
 
 # Install
-Currently, this assumes that Chocolatey is installed.  Having met that requirement, download the files from this repository, keeping both choc-eula.ps1 and choc-eula.json in the same directory.  The suggested location is "c:\Powershell" but this can be anywhere you see fit.
+Currently, this assumes that Chocolatey is [installed](https://chocolatey.org/install).  Having met that requirement, download the files from this repository, keeping both choc-eula.ps1 and choc-eula.json in the same directory.  The suggested location is "c:\Powershell" but this can be anywhere you see fit.
 
 # Configuration and operation
 Use the `-add` and `-delete` parameters to add or remove [Chocolatey packages](https://chocolatey.org/packages) to the list.  
