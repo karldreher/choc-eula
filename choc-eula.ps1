@@ -46,7 +46,7 @@ function delete_entry($entry) {
 
 function show_config {
     $apps = gc $PSScriptRoot\choc-eula.json | ConvertFrom-Json
-    write-host "The following apps are configured to update or isntall with choc-eula:  "
+    write-host "The following apps are configured to update or install with choc-eula:  "
     write-host "-------------------"
     $apps.apps
     write-host "-------------------"
