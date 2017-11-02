@@ -1,13 +1,22 @@
 Param(
     [Parameter(Mandatory=$False, 
-    HelpMessage= "Format: c:\path\to\file.csv."
+    HelpMessage= "Displays current configuration."
     )]
-    [switch]$configure
+    [switch]$showconfig,
 
+    [Parameter(Mandatory=$False, 
+    HelpMessage= "Delete a value.  Syntax: -delete <package>"
+    )]
+    $delete,
+
+    [Parameter(Mandatory=$False, 
+    HelpMessage= "Add a value.  Syntax: -add <package>"
+    )]
+    $add
 )
 
 $apps = gc $PSScriptRoot\choc-eula.json | ConvertFrom-Json
-
+$output = "$PSScriptRoot\choc-eula.json"
 
 function add_entry($entry) {
     $list = @()
@@ -23,7 +32,7 @@ function add_entry($entry) {
     Add-Member -InputObject $object -MemberType NoteProperty -Name app -Value $entry 
     $list += $object
 
-    $list | ConvertTo-Json | out-file $PSScriptRoot\choc-eula.json
+    $list | ConvertTo-Json | out-file $output
 
 }
 
@@ -39,8 +48,8 @@ function delete_entry($entry) {
         
         }
 
-    $list | ConvertTo-Json | out-file $PSScriptRoot\choc-eula.json
-
+    $list | ConvertTo-Json | out-file $output
+    
 }
 
 
@@ -54,33 +63,6 @@ function show_config {
 }
 
 
-function configure{
-    
-    
-
-    while ($exit -ne $True){
-        show_config
-        $input = read-host "What do you want to do next?  Type ADD, DELETE, or EXIT"
-        
-        Switch($input){
-            "add"{
-            $entry = read-host "Enter the name of the package you want to add"
-            add_entry($entry)
-            }
-
-            "delete"{
-            $entry = read-host "Enter the name of the package you want to delete, as it appears above"
-            delete_entry($entry)
-            }
-
-            "exit"{$exit = $True}
-
-
-        }
-        
-    }
-}
-
 
 
 function update {
@@ -92,11 +74,25 @@ function update {
 
 
 
+#showconfig takes precedence here, intentionally.  Not possible to add, delete, or show config at the same time.  
+#similarly update will only occur if all parameters are omitted.  All options are mutually exclusive.
 
-if ($configure.ispresent){
-    configure
-    }
+if($PSBoundParameters.ContainsKey("showconfig")){
+    show_config
+}
 
-else {
+elseif($PSBoundParameters.ContainsKey("delete")){
+    write-host "Deleting entry" `"$delete`"
+    delete_entry($delete)
+    show_config
+}
+
+elseif($PSBoundParameters.ContainsKey("add")){
+    write-host "Adding entry" `"$delete`"
+    add_entry($add)
+    show_config
+}
+
+if ($PSBoundParameters.Count -eq 0){
     update
-    }
+}
