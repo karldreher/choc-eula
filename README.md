@@ -11,15 +11,15 @@ Currently, this assumes that Chocolatey is [installed](https://chocolatey.org/in
 Use the `-add` and `-delete` parameters to add or remove [Chocolatey packages](https://chocolatey.org/packages) to the list.  
 
 You can check the current list of packages with:
-`choc-eula.ps1 -showconfig`
+  `choc-eula.ps1 -showconfig`
 
 A sample list is included, you can modify as desired.  You can also use the `-configfile` parameter in combination with any other parameters to use a custom list - you can keep as many as you want!
 
-`choc-eula.ps1 -configfile "c:\path\to\file.json"`
+  `choc-eula.ps1 -configfile "c:\path\to\file.json"`
 
 Whenever you want to update or install your apps, simply run choc-eula.ps1 from an administrative Powershell prompt.  
 
-`choc-eula.ps1`
+  `choc-eula.ps1`
 
 This will automatically accept EULAs and proceed with upgrades of all apps in your configuration without additional confirmation.
 
