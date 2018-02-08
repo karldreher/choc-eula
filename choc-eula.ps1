@@ -1,4 +1,9 @@
 Param(
+    [Parameter(Mandatory=$False,
+    HelpMessage= "path to alternate config file, otherwise default is choc-eula.json in script directory.  Syntax: c:\path\to\file.json"
+    )]
+    $configfile="$PSScriptRoot\choc-eula.json",
+
     [Parameter(Mandatory=$False, 
     HelpMessage= "Displays current configuration."
     )]
@@ -13,10 +18,11 @@ Param(
     HelpMessage= "Add a value.  Syntax: -add <package>"
     )]
     $add
+
 )
 
-$apps = gc $PSScriptRoot\choc-eula.json | ConvertFrom-Json
-$output = "$PSScriptRoot\choc-eula.json"
+
+$apps = get-content $configfile | ConvertFrom-Json
 
 function add_entry($entry) {
     $list = @()
@@ -32,7 +38,7 @@ function add_entry($entry) {
     Add-Member -InputObject $object -MemberType NoteProperty -Name app -Value $entry 
     $list += $object
 
-    $list | ConvertTo-Json | out-file $output
+    $list | ConvertTo-Json | out-file $configfile
 
 }
 
@@ -48,13 +54,13 @@ function delete_entry($entry) {
         
         }
 
-    $list | ConvertTo-Json | out-file $output
+    $list | ConvertTo-Json | out-file $configfile
     
 }
 
 
 function show_config {
-    $apps = gc $PSScriptRoot\choc-eula.json | ConvertFrom-Json
+    $apps = gc $configfile | ConvertFrom-Json
     write-host "The following apps are configured to update or install with choc-eula:  "
     write-host "-------------------"
     $apps.app
@@ -88,11 +94,16 @@ elseif($PSBoundParameters.ContainsKey("delete")){
 }
 
 elseif($PSBoundParameters.ContainsKey("add")){
-    write-host "Adding entry" `"$add`"
+    write-host "Adding entry" `"$delete`"
     add_entry($add)
     show_config
 }
 
 if ($PSBoundParameters.Count -eq 0){
+    update
+}
+
+#this is starting to get a little much, but ok for now.  
+if ($PSBoundParameters.Count -eq 1 -and $PSBoundParameters.ContainsKey("configfile")){
     update
 }
