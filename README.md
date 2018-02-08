@@ -13,9 +13,9 @@ Use the `-add` and `-delete` parameters to add or remove [Chocolatey packages](h
 You can check the current list of packages with:
 `choc-eula.ps1 -showconfig`
 
-A sample list is included, you can modify as desired.
+A sample list is included, you can modify as desired.  You can also use the `-configfile` parameter in combination with any other parameters to use a custom list - you can keep as many as you want!
 
-Keep the PS1 script and JSON file together and back the .json file up - this is your personal, living configuration which will hopefully survive multiple PC builds.  You can continue to make changes to this for the duration of your use of choc-eula, and the usefulness will grow with with the file.
+`choc-eula.ps1 -configfile "c:\path\to\file.json`
 
 Whenever you want to update or install your apps, simply run choc-eula.ps1 from an administrative Powershell prompt.  
 
