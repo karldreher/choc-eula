@@ -15,7 +15,7 @@ You can check the current list of packages with:
 
 A sample list is included, you can modify as desired.  You can also use the `-configfile` parameter in combination with any other parameters to use a custom list - you can keep as many as you want!
 
-`choc-eula.ps1 -configfile "c:\path\to\file.json`
+`choc-eula.ps1 -configfile "c:\path\to\file.json"`
 
 Whenever you want to update or install your apps, simply run choc-eula.ps1 from an administrative Powershell prompt.  
 
