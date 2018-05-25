@@ -94,7 +94,7 @@ elseif($PSBoundParameters.ContainsKey("delete")){
 }
 
 elseif($PSBoundParameters.ContainsKey("add")){
-    write-host "Adding entry" `"$delete`"
+    write-host "Adding entry" `"$add`"
     add_entry($add)
     show_config
 }
