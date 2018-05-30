@@ -72,10 +72,7 @@ function show_config {
 
 
 function update {
-    foreach ($i in $apps.app){
-
-        choco upgrade $i -y
-    }
+        choco upgrade (($apps.app) -join ";") -y
 }
 
 
