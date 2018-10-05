@@ -17,11 +17,16 @@ A sample list is included, you can modify as desired.  You can also use the `-co
 
   `choc-eula.ps1 -configfile "c:\path\to\file.json"`
 
-Whenever you want to update or install your apps, simply run choc-eula.ps1 from an administrative Powershell prompt.  
+Whenever you want to update or install your apps, simply run choc-eula.ps1 from an elevated Powershell prompt.  
 
   `choc-eula.ps1`
 
 This will automatically accept EULAs and proceed with upgrades of all apps in your configuration without additional confirmation.
 
 This is also suitable for installing as a Scheduled Task in Windows, doing so will make sure that all your packages are always up to date. 
+
+For full instructions including examples, please refer to the `get-help` documentation available from the console.  
+
+`get-help .\choc-eula.ps1`
+
 
