@@ -124,7 +124,7 @@ function delete_entry($entry) {
 
 
 function show_config {
-    $apps = gc $configfile | ConvertFrom-Json
+    $apps = Get-Content $configfile | ConvertFrom-Json
     write-host "The following apps are configured to update or install with choc-eula:  "
     write-host "-------------------"
     $apps.app
